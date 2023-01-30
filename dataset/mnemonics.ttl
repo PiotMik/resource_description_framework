@@ -1,0 +1,95 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mnems: <http://example.org/mnemonics/> .
+@prefix assets: <http://example.org/asset_classes/> .
+@prefix geo: <http://example.org/geolocations/> .
+@prefix rate: <http://example.org/rates/> .
+
+mnems:describes
+    a rdf:Property ;
+	rdfs:label "describes" ;
+	rdfs:comment "The subject describes the object." .
+
+rate:tenor
+    a rdf:Property ;
+    rdfs:label "tenor" ;
+    rdfs:comment "The subject reflects the tenor on a curve".
+
+rate:setBy
+    a rdf:Property ;
+    rdfs:label "setBy" ;
+    rdfs:comment "The subject is set by the object".
+
+rate:CentralBank a rdfs:Class .
+
+rate:federal-reserve
+    a rate:CentralBank;
+    geo:locatedIn geo:united-states.
+
+rate:european-central-bank
+    a rate:CentralBank;
+    geo:locatedIn geo:europe.
+
+mnems:Mnemonic a rdfs:Class .
+
+# Mnemonics
+mnems:USGDPT
+    a mnems:Mnemonic ;
+    rdfs:member assets:GrossDomesticProduct;
+    mnems:describes geo:united-states.
+
+mnems:USCPIA
+    a mnems:Mnemonic;
+    rdfs:member assets:ConsumerPriceIndex;
+    mnems:describes geo:united-states.
+
+mnems:CNGDPT
+    a mnems:Mnemonic;
+    rdfs:member assets:GrossDomesticProduct;
+    mnems:describes geo:china.
+
+mnems:CNCPIA
+    a mnems:Mnemonic;
+    rdfs:member assets:ConsumerPriceIndex;
+    mnems:describes geo:china.
+
+mnems:RUGDPT
+    a mnems:Mnemonic;
+    rdfs:member assets:GrossDomesticProduct;
+    mnems:describes geo:russia.
+
+mnems:USRLG6ME
+    a mnems:Mnemonic;
+    rdfs:member assets:GovieYield;
+    mnems:describes geo:united-states;
+    rate:tenor "6M".
+
+mnems:USRCBFEDE
+    a mnems:Mnemonic;
+    rdfs:member assets:CentralBankPolicyRate ;
+    mnems:describes geo:united-states;
+    rate:setBy rate:federal-reserve .
+
+mnems:USRCBIOERE
+    a mnems:Mnemonic;
+    rdfs:member assets:CentralBankPolicyRate ;
+    mnems:describes geo:united-states;
+    rate:setBy rate:federal-reserve .
+
+mnems:EZRCBE
+    a mnems:Mnemonic;
+    rdfs:member assets:CentralBankPolicyRate ;
+    mnems:describes geo:europe ;
+    rate:setBy rate:european-central-bank  .
+
+mnems:USROIS3ME
+    a mnems:Mnemonic;
+    rdfs:member assets:OISRate ;
+    mnems:describes geo:united-states;
+    rate:tenor "3M".
+
+mnems:USROIS6ME
+    a mnems:Mnemonic;
+    rdfs:member assets:OISRate ;
+    mnems:describes geo:united-states;
+    rate:tenor "3M".

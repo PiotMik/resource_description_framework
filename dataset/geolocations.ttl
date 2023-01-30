@@ -1,0 +1,66 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://example.org/geolocations/> .
+
+geo:locatedIn a rdf:Property ;
+	rdfs:label "locatedIn" ;
+	rdfs:comment "The subject is physically located in the object.".
+
+geo:Country a rdfs:Class.
+
+geo:Continent a rdfs:Class.
+
+geo:Region a rdfs:Class.
+
+geo:asia a geo:Continent .
+
+geo:europe a geo:Continent .
+
+geo:north-america a geo:Continent .
+
+geo:south-america a geo:Continent .
+
+geo:united-states
+    a geo:Country ;
+    geo:locatedIn geo:north-america.
+
+geo:canada
+    a geo:Country ;
+    geo:locatedIn geo:north-america.
+
+geo:brazil
+    a geo:Country ;
+    geo:locatedIn geo:south-america.
+
+geo:colombia
+    a geo:Country ;
+    geo:locatedIn geo:south-america.
+
+geo:switzerland
+    a geo:Country ;
+    geo:locatedIn geo:europe.
+
+geo:germany
+    a geo:Country ;
+    geo:locatedIn geo:europe.
+
+geo:france
+    a geo:Country ;
+    geo:locatedIn geo:europe.
+
+geo:poland
+    a geo:Country ;
+    geo:locatedIn geo:europe.
+
+geo:china
+    a geo:Country ;
+    geo:locatedIn geo:asia.
+
+geo:japan
+    a geo:Country ;
+    geo:locatedIn geo:asia.
+
+geo:russia
+    a geo:Country ;
+    geo:locatedIn geo:asia.

@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voc: <https://swapi.co/vocabulary/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix assets: <http://example.org/asset_classes/> .
+
+
+assets:AssetClass
+    rdfs:label "Asset class"^^xsd:string .
+
+assets:Macroeconomic
+    rdfs:label "Macroeconomic variable"^^xsd:string .
+
+assets:Financial
+    rdfs:label "Financial variable"^^xsd:string .
+
+assets:Rate
+    rdfs:label "Rate"^^xsd:string ;
+    rdfs:subClassOf assets:AssetClass, assets:Financial .
+
+assets:OISRate
+    rdfs:label "Overnight Indexed Swap rate"^^xsd:string ;
+    rdfs:subClassOf assets:Rate .
+
+assets:CentralBankPolicyRate
+    rdfs:label "Central Bank Policy rate"^^xsd:string ;
+    rdfs:subClassOf assets:Rate .
+
+assets:GovieYield
+    rdfs:label "Government Bond yield"^^xsd:string ;
+    rdfs:subClassOf assets:Rate .
+
+assets:GrossDomesticProduct
+    rdfs:label "Gross Domestic Product"^^xsd:string ;
+    rdfs:subClassOf assets:AssetClass, assets:Macroeconomic .
+
+assets:ConsumerPriceIndex
+    rdfs:label "Consumer Price Index"^^xsd:string ;
+    rdfs:subClassOf assets:AssetClass, assets:Macroeconomic .
